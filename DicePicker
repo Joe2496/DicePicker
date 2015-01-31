@@ -1,0 +1,64 @@
+import java.util.Scanner;
+/**
+ * @author joe2496
+ */
+public class DicePicker {
+    public static int numberFix(int number) {
+        if (number < 0)
+            number = -number;
+        if (number > 10) {
+            String convert = Integer.toString(number);
+            String convert2 = convert.substring(convert.length() - 1);
+            number = Integer.parseInt(convert2);
+        }
+        return number;
+    }
+    
+    public static void main(String[] args) {
+        int number = 0;
+        int control = 0;
+        Scanner scan = new Scanner(System.in);
+        do {
+            System.out.println("Input a number: ");
+            String in = scan.nextLine();
+            try {
+                number = Integer.parseInt(in);
+                System.out.println(number);
+                control = 1;
+            } catch (NumberFormatException e) {
+                System.err.println("NumberFormatException: " + e.getMessage());
+            }
+        } while (control == 0);
+        int number2 = numberFix(number);
+        
+        String color;
+        switch (number2) {
+            case 1:  color = "red";
+            break;
+            case 2:  color = "green";
+            break;
+            case 3:  color = "blue";
+            break;
+            case 4:  color = "yellow";
+            break;
+            case 5:  color = "orange";
+            break;
+            case 6:  color = "purple";
+            break;
+            case 7:  color = "pink";
+            break;
+            case 8:  color = "white";
+            break;
+            case 9:  color = "black";
+            break;
+            case 10:  color = "silver";
+            break;
+            default:  color = "gold";
+            break;
+        }
+        if (number2 == 5)
+            System.out.printf("You have won an %s Dice Picker!\n", color);
+        else
+            System.out.printf("You have won a %s Dice Picker!\n", color);
+    }
+}
